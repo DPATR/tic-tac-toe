@@ -1,6 +1,6 @@
 .styled {
   border-collapse: collapse;
-  margin-left: 35%;
+  margin-left: 37%;
   border: 1px solid black;
   width: 400px;
   margin-top: 5%;
@@ -16,9 +16,13 @@ h3 {
   text-align: center;
 }
 
+h2 {
+  background-color: beige;
+}
+
 .btn-start {
   background-color: gray;
   color: white;
   font-size: 20px;
-  margin-left: 35%;
+  margin-left: 37%;
 }
