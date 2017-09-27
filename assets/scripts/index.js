@@ -12,3 +12,9 @@ $(() => {
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
+
+const gameEvents = require('./games/events')
+
+$(() => {
+  $('#game-board').on('submit', gamesEvents.onStartGame)
+})
