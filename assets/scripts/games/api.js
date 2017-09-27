@@ -44,12 +44,12 @@ const signOut = function (data) {
 }
 
 const startGame = function (data) {
-  console.log('in api.js ', store.user)
-  return $.ajax({ // make a request of the API
-    url: config.apiOrigin + '/game-board',
-    method: 'POST',
-    data
-  })
+  console.log('in api.js')
+  // return $.ajax({ // make a request of the API
+  //   url: config.apiOrigin + '/game-board',
+  //   method: 'POST',
+  //   data
+  // })
 }
 
 module.exports = {

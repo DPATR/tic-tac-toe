@@ -23,3 +23,6 @@ $(() => {
 $(() => {
   events.addHandlers() // references functions in events.js without having to define functions here
 })
+// $(() => {
+//   $('.cell topleft').on('click', events.onCreateBook)
+// })
