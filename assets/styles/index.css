@@ -1,0 +1,56 @@
+/*
+.container-fluid {
+  border: 1px solid #000;
+  height: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.container-box {
+  border: 1px solid #000;
+  float: left;
+  margin-bottom: 10%;
+  margin-top: 10%;
+  margin-left: 10px;
+  width: 77%;
+  height: 45%;
+}
+
+.topleft {
+  background-color: white;
+  border: 1px solid #000;
+  margin-left: 6%;
+  float: left;
+  text-align: center;
+  width: 25%;
+}
+
+.topcenter {
+  background-color: white;
+  border: 1px solid #000;
+  float: left;
+  text-align: center;
+  width: 55%;
+}
+
+.topright {
+  background-color: white;
+  border: 1px solid #000;
+  float: left;
+  text-align: center;
+  width: 55%;
+}
+
+.middleleft {
+  background-color: white;
+  border: 1px solid #000;
+  float: right;
+  text-align: center;
+  width: 55%;
+}*/
+
+
+.styled {
+  border-collapse: collapse;
+  margin-left: 30%;
+}
