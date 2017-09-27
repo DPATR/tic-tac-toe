@@ -6,7 +6,7 @@ A template for starting front-end projects. Webpack for `require` system, build
 pipeline, and development server. Boostrap and Handlebars.js included. No
 front-end frameworks included.
 
-## Installation
+## Installation -- DONE!!
 
 1.  [Download](../../archive/master.zip) this template.
 1.  Unzip and rename the template directory.
