@@ -14,15 +14,47 @@
     <body class="container-fluid">
       <div>
       <h2>Tic-Tac-Toe</h2>
-        <form class="games" id="nav-buttons">
-          <button type="submit" class="btn-signup">Sign Up</button>
-          <button type="submit" class="btn-signin">Sign In</button>
-          <button type="submit" class="btn-signout">Sign Out</button>
-          <button type="submit" class="btn-change-pswd">Change Password</button>
-          <button type="submit" class="btn-gamestats">Game Statistics</button>
-        </form>
-      </div>
+      <form class="games" id="nav-buttons">
+        <button type="submit" class="btn-signup">Sign Up</button>
+        <button type="submit" class="btn-signin">Sign In</button>
+        <button type="submit" class="btn-signout">Sign Out</button>
+        <button type="submit" class="btn-change-pswd">Change Password</button>
+        <button type="submit" class="btn-gamestats">Game Statistics</button>
+      </form>
+    </div>
+      <form id="sign-up">
+        <fieldset>
+          <legend>Sign up!</legend>
+            <input type="text" name="credentials[email]" placeholder="Enter Email">
+            <input type="text" name="credentials[password]" placeholder="Enter Password">
+            <input type="text" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <input type="submit" name="submit" value="Sign up!">
+        </fieldset>
+      </form>
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" placeholder="Enter Email">
+          <input type="text" name="credentials[password]" placeholder="Enter Password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign out!</legend>
+          <input type="submit" name="submit" value="Sign out!">
+        </fieldset>
+      </form>
+      <form id="change-password">
+        <fieldset>
+          <legend>Change Password!</legend>
+          <input type="text" name="passwords[old]" placeholder="Enter Old Password">
+          <input type="text" name="passwords[new]" placeholder="Enter New Password">
+          <input type="submit" name="submit" value="Change Password!">
+        </fieldset>
+      </form>
       <h3>Let's Play the Game!</h3>
+      <br>
       <form class="games" id="game-board">
         <div>
           <table class="styled">
