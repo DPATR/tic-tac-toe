@@ -12,27 +12,33 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
-      <p></p>
-      <p>Merged with master</p>
-      <div>
-        <table class="styled">
-          <tr>
-            <td><input class="topleft" type="text" name="box1" placeholder="box1"></td>
-            <td><input class="topcenter" type="text" name="box2" placeholder="box2"></td>
-            <td><input class="topright" type="text" name="box3" placeholder="box3"></td>
-          </tr>
-          <tr>
-            <td><input class="middleleft" type="text" name="box4" placeholder="box4"></td>
-            <td><input class="middlecenter" type="text" name="box5" placeholder="box5"></td>
-            <td><input class="middleright" type="text" name="box6" placeholder="box6"></td>
-          </tr>
-          <tr>
-            <td><input class="bottomleft" type="text" name="box7" placeholder="box7"></td>
-            <td><input class="bottomcenter" type="text" name="box8" placeholder="box8"></td>
-            <td><input class="bottomright" type="text" name="box9" placeholder="box9"></td>
-          </tr>
-        </table>
-      </div>
+      <br>
+      <br>
+      <h3>Let's Play the Game!</h3>
+      <form class="games" id="game-board">
+        <div>
+          <table class="styled">
+            <tr id="row1">
+              <td><input class="topleft" type="text" name="box1" placeholder=""></td>
+              <td><input class="topcenter" type="text" name="box2" placeholder=""></td>
+              <td><input class="topright" type="text" name="box3" placeholder=""></td>
+            </tr>
+            <tr id="row2">
+              <td><input class="middleleft" type="text" name="box4" placeholder=""></td>
+              <td><input class="middlecenter" type="text" name="box5" placeholder=""></td>
+              <td><input class="middleright" type="text" name="box6" placeholder=""></td>
+            </tr>
+            <tr id="row3">
+              <td><input class="bottomleft" type="text" name="box7" placeholder=""></td>
+              <td><input class="bottomcenter" type="text" name="box8" placeholder=""></td>
+              <td><input class="bottomright" type="text" name="box9" placeholder=""></td>
+            </tr>
+          </table>
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn-start">Start a New Game</button>
+      </form>
+      <section id="content"></section>
     </body>
 </html>
