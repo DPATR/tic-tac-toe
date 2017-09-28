@@ -56,9 +56,23 @@ let gameOver
 
 // http://www.dreamincode.net/forums/topic/296317-creating-a-simple-tic-tac-toe-game-in-javascript/
 
+const initVariables = function () {
+  console.log('in initVariables')
+  $('#gamemessage').text('')
+  symbol = ''
+  counter = 0
+  drawCounter = 0
+  cellName = ''
+  cellValue = ''
+  haveAWinner = false
+  arrItemsPopulated = false
+  gameOver = false
+  return true
+}
+
 const onStartGame = function (event) {
   event.preventDefault()
-  counter = 0
+  initVariables()
   gameArray = ['', '', '', '', '', '', '', '', '']
   console.log(gameArray)
   $('.cell').text('')
@@ -136,13 +150,9 @@ const onClickBoard = function (event) {
   cellValue = changeSymbol(counter, myVal)
   if (cellValue === 'occupied') {
     if (!gameOver) {
-      // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
-      // REPLACE ALERT ***
-      alert('You must choose a game position that is not occupied')
+      $('#gamemessage').text('You must choose a game position that is not occupied')
     } else {
-      // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
-      // REPLACE ALERT ***
-      alert('The Game is Over. Start New Game to play again!')
+      $('#gamemessage').text('The Game is Over. Start New Game to play again!')
     }
   } else {
     document.getElementById(event.target.id).value = cellValue
@@ -152,10 +162,8 @@ const onClickBoard = function (event) {
     if (!haveAWinner) {
       haveAWinner = checkWin(gameArray)
       if (haveAWinner) {
-        // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
-        // REPLACE ALERT ***
         gameOver = true
-        alert(symbol + ' Wins!')
+        $('#gamemessage').text(symbol + ' Wins!')
       }
     }
   }
@@ -166,15 +174,13 @@ const onClickBoard = function (event) {
       // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
       // REPLACE ALERT ***
       gameOver = true
-      alert(symbol + ' Wins!')
+      $('#gamemessage').text(symbol + ' Wins!')
     }
   }
   if (!haveAWinner && !gameOver) {
     gameOver = checkDraw(gameArray)
     if (gameOver) {
-      // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
-      // REPLACE ALERT ***
-      alert('It is a Draw!')
+      $('#gamemessage').text('It is a Draw!')
     }
   }
 }

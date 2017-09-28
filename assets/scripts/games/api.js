@@ -50,6 +50,7 @@ const startGame = function (data) {
   //   method: 'POST',
   //   data
   // })
+  // Need to set up a shell for this function
 }
 
 module.exports = {

@@ -30,3 +30,9 @@ h2 {
 .cell {
     text-align: center;
 }
+
+#gamemessage {
+  text-align: center;
+  color: red;
+  font-size: 18px;
+}
