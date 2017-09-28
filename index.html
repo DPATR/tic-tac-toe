@@ -16,6 +16,7 @@
       <h2>Tic-Tac-Toe</h2>
       <div id='message'></div>
       <br>
+      <!--
       <form class="games" id="nav-buttons">
         <button type="submit" class="btn-signup">Sign Up</button>
         <button type="submit" class="btn-signin">Sign In</button>
@@ -23,68 +24,74 @@
         <button type="submit" class="btn-change-pswd">Change Password</button>
         <button type="submit" class="btn-gamestats">Game Statistics</button>
       </form>
-    </div>
-      <form id="sign-up">
-        <fieldset>
-          <legend>Sign up!</legend>
+      -->
+      </div>
+        <form id="sign-up">
+          <fieldset>
+            <legend>Sign up!</legend>
+              <input type="text" name="credentials[email]" placeholder="Enter Email">
+              <input type="text" name="credentials[password]" placeholder="Enter Password">
+              <input type="text" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="submit" name="submit" value="Sign up!">
+          </fieldset>
+        </form>
+        <br>
+        <br>
+        <form id="sign-in">
+          <fieldset>
+            <legend>Sign in!</legend>
             <input type="text" name="credentials[email]" placeholder="Enter Email">
             <input type="text" name="credentials[password]" placeholder="Enter Password">
-            <input type="text" name="credentials[password_confirmation]" placeholder="Confirm Password">
-            <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
-      <form id="sign-in">
-        <fieldset>
-          <legend>Sign in!</legend>
-          <input type="text" name="credentials[email]" placeholder="Enter Email">
-          <input type="text" name="credentials[password]" placeholder="Enter Password">
-          <input type="submit" name="submit" value="Sign in!">
-        </fieldset>
-      </form>
-      <form id="sign-out">
-        <fieldset>
-          <legend>Sign out!</legend>
-          <input type="submit" name="submit" value="Sign out!">
-        </fieldset>
-      </form>
-      <form id="change-password">
-        <fieldset>
-          <legend>Change Password!</legend>
-          <input type="text" name="passwords[old]" placeholder="Enter Old Password">
-          <input type="text" name="passwords[new]" placeholder="Enter New Password">
-          <input type="submit" name="submit" value="Change Password!">
-        </fieldset>
-      </form>
-      <h3>Let's Play the Game!</h3>
-      <br>
-      <form class="games" id="game-board">
-        <div>
+            <input type="submit" name="submit" value="Sign in!">
+          </fieldset>
+        </form>
+        <br>
+        <br>
+        <form id="sign-out">
+          <fieldset>
+            <legend>Sign out!</legend>
+            <input type="submit" name="submit" value="Sign out!">
+          </fieldset>
+        </form>
+        <br>
+        <br>
+        <form id="change-password">
+          <fieldset>
+            <legend>Change Password!</legend>
+            <input type="text" name="passwords[old]" placeholder="Enter Old Password">
+            <input type="text" name="passwords[new]" placeholder="Enter New Password">
+            <input type="submit" name="submit" value="Change Password!">
+          </fieldset>
+        </form>
+        <h3>Let's Play the Game!</h3>
+        <form class="games" id="game-board">
           <div>
-          <div id='gamemessage'></div>
-          <br>
-          <table class="styled">
-            <tr id="row1">
-              <td><input class="cell" name="1" id="1"></td>
-              <td><input class="cell" name="2" id="2"></td>
-              <td><input class="cell" name="3" id="3"></td>
-            </tr>
-            <tr id="row2">
-              <td><input class="cell" name="4" id="4"></td>
-              <td><input class="cell" name="5" id="5"></td>
-              <td><input class="cell" name="6" id="6"></td>
-            </tr>
-            <tr id="row3">
-              <td><input class="cell" name="7" id="7"></td>
-              <td><input class="cell" name="8" id="8"></td>
-              <td><input class="cell" name="9" id="9"></td>
-            </tr>
-          </table>
+            <div>
+              <div id='gamemessage'></div>
+              <br>
+              <table class="styled">
+                <tr id="row1">
+                  <td class="cell" id="1"></td>
+                  <td class="cell" id="2"></td>
+                  <td class="cell" id="3"></td>
+                </tr>
+                <tr id="row2">
+                  <td class="cell" id="4"></td>
+                  <td class="cell" id="5"></td>
+                  <td class="cell" id="6"></td>
+                </tr>
+                <tr id="row3">
+                  <td class="cell" id="7"></td>
+                  <td class="cell" id="8"></td>
+                  <td class="cell" id="9"></td>
+                </tr>
+              </table>
+            </div>
           </div>
-        </div>
-        <br>
-        <br>
-        <button type="submit" class="btn-start">Start a New Game</button>
-      </form>
-      <section id="content"></section>
+          <br>
+          <br>
+          <button type="submit" class="btn-start">Start a New Game</button>
+        </form>
+    <section id="content"></section>
     </body>
 </html>

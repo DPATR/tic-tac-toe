@@ -16,6 +16,7 @@ const signInSuccess = function (data) {
   console.log('in ui.js ', data)
   $('#message').text('Signed in successfully')
   store.user = data.user
+
 }
 
 const signInFailure = function (error) {

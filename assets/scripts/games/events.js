@@ -146,17 +146,21 @@ const checkDraw = function (gameArray) {
 
 const onClickBoard = function (event) {
   event.preventDefault()
-  const myVal = document.getElementById(event.target.id).value
+  // let myVal = document.getElementById(event.target.id).value
+  const myVal = $(this).text()
+  // console.log(myVal)
   cellValue = changeSymbol(counter, myVal)
+  if (gameOver) {
+    $('#gamemessage').text('The Game is Over. Start New Game to play again!')
+    return
+  }
   if (cellValue === 'occupied') {
-    if (!gameOver) {
-      $('#gamemessage').text('You must choose a game position that is not occupied')
-    } else {
-      $('#gamemessage').text('The Game is Over. Start New Game to play again!')
-    }
+    $('#gamemessage').text('You must choose a game position that is not occupied')
   } else {
-    document.getElementById(event.target.id).value = cellValue
+    $(this).text(cellValue)
+    // console.log(cellValue)
     gameArray[event.target.id - 1] = cellValue
+    // console.log(gameArray)
     counter++
     symbol = gameX
     if (!haveAWinner) {
