@@ -16,7 +16,7 @@ const signInSuccess = function (data) {
   console.log('in ui.js ', data)
   $('#message').text('Signed in successfully')
   store.user = data.user
-
+  $('.games').show()
 }
 
 const signInFailure = function (error) {
@@ -37,6 +37,7 @@ const signOutSuccess = function (data) {
   $('#message').text('Signed out successfully')
   console.log('Signed out successfully!')
   store.user = null
+  $('.games').hide()
 }
 
 const signOutFailure = function (error) {

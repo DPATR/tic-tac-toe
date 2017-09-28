@@ -74,7 +74,7 @@ const onStartGame = function (event) {
   event.preventDefault()
   initVariables()
   gameArray = ['', '', '', '', '', '', '', '', '']
-  console.log(gameArray)
+  // console.log(gameArray)
   $('.cell').text('')
   // for (let i = 0; i < gameArray.length; i++) {
   //   // line below is not working - need to initialize the event.target
@@ -189,6 +189,7 @@ const onClickBoard = function (event) {
   }
 }
 
+
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -196,6 +197,7 @@ const addHandlers = function () {
   $('#sign-out').on('submit', onSignOut)
   $('#game-board').on('submit', onStartGame)
   $('.cell').on('click', onClickBoard)
+  $('.btn-signout').on('click', onSignOutClick)
 }
 
 module.exports = {
