@@ -41,44 +41,101 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
-// let gameArray = ['', '', '', '', '', '', '', '', '']
+let gameArray = ['', '', '', '', '', '', '', '', '']
 const gameX = 'X'
 const gameO = 'O'
+const initGame = ''
+let symbol
 let counter = 0
+let cellName
+let cellValue
+let haveAWinner
 
 // http://www.dreamincode.net/forums/topic/296317-creating-a-simple-tic-tac-toe-game-in-javascript/
 
 const onStartGame = function (event) {
-  const data = getFormFields(event.target)
-  console.log(data)
-  // console.log(data.length) does not work!
   event.preventDefault()
-  let gameArray = ['', '', '', '', '', '', '', '', '']
-  for (let i = 0; i < 9; i++) {
-    // set table cell value = ' '
+  counter = 0
+  gameArray = ['', '', '', '', '', '', '', '', '']
+  for (let i = 0; i < gameArray.length; i++) {
+    // line below is not working - need to initialize the event.target
+    document.getElementById(event.target.id).setAttribute('value', '')
   }
-  console.log(data)
+}
+
+const changeSymbol = function (counter, myVal) {
+  if (counter === 0 && myVal !== 'X' && myVal !== 'O') {
+    return gameX
+  } else {
+    if (counter > 0 && myVal !== 'X' && myVal !== 'O') {
+      if (counter === 1 || counter === 3 || counter === 5 || counter === 7 || counter === 9) {
+        return gameO
+      } else {
+        if (counter === 2 || counter === 4 || counter === 6 || counter === 8) {
+          return gameX
+        }
+      }
+    } else {
+      return 'occupied'
+    }
+  }
+}
+
+const checkWin = function (gameArray) {
+  console.log('in checkWin')
+  if (gameArray[0] === symbol && gameArray[1] === symbol && gameArray[2] === symbol) {
+    return true
+  }
+  if (gameArray[3] === symbol && gameArray[4] === symbol && gameArray[5] === symbol) {
+    return true
+  }
+  if (gameArray[6] === symbol && gameArray[7] === symbol && gameArray[8] === symbol) {
+    return true
+  }
+  if (gameArray[0] === symbol && gameArray[3] === symbol && gameArray[6] === symbol) {
+    return true
+  }
+  if (gameArray[1] === symbol && gameArray[4] === symbol && gameArray[7] === symbol) {
+    return true
+  }
+  if (gameArray[2] === symbol && gameArray[5] === symbol && gameArray[8] === symbol) {
+    return true
+  }
+  if (gameArray[0] === symbol && gameArray[4] === symbol && gameArray[8] === symbol) {
+    return true
+  }
+  if (gameArray[2] === symbol && gameArray[4] === symbol && gameArray[6] === symbol) {
+    return true
+  }
 }
 
 const onClickBoard = function (event) {
   event.preventDefault()
-  // const data = getFormFields(event.target)
-  console.log(event)
-  // if(counter = 0) {
-  //   console.log('hi')
-  //   populate selected cell with 'X'
-  //   counter++
-  // }
-}
-
-const checkWin = function () {
-  // if there are 3 of the same symbols in a row, return true
-  // if not, return false
-  return true
-}
-
-const changeSymbol = function () {
-
+  const myVal = document.getElementById(event.target.id).value
+  cellValue = changeSymbol(counter, myVal)
+  if (cellValue === 'occupied') {
+    // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
+    // REPLACE ALERT ***
+    alert('You must choose a game position that is not occupied')
+  } else {
+    document.getElementById(event.target.id).value = cellValue
+    gameArray[event.target.id - 1] = cellValue
+    counter++
+    symbol = gameX
+    haveAWinner = checkWin(gameArray)
+    if (haveAWinner) {
+      alert(symbol + ' Wins!')
+    } else {
+      symbol = gameO
+      haveAWinner = checkWin(gameArray)
+      if (haveAWinner) {
+        alert(symbol + ' Wins!')
+      }
+    }
+    if (!haveAWinner) {
+      alert('It is a Draw!')
+    }
+  }
 }
 
 const addHandlers = function () {
