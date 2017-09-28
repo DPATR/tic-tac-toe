@@ -23,6 +23,7 @@ $(() => {
 $(() => {
   events.addHandlers() // references functions in events.js without having to define functions here
 })
+// Can create event handlers in this index.js object if wanted:
 // $(() => {
 //   $('.cell topleft').on('click', events.onCreateBook)
 // })

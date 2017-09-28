@@ -61,10 +61,14 @@ const onStartGame = function (event) {
   counter = 0
   gameArray = ['', '', '', '', '', '', '', '', '']
   console.log(gameArray)
-  for (let i = 0; i < gameArray.length; i++) {
-    // line below is not working - need to initialize the event.target
-    document.getElementById(event.target.id).setAttribute('value', '')
-  }
+  $('.cell').text('')
+  // for (let i = 0; i < gameArray.length; i++) {
+  //   // line below is not working - need to initialize the event.target
+  //   // console.log(i)
+  //   console.log(document.getElementById(event.target.id).value)
+  //   // console.log(document.getElementById(event.target.id).value)
+  //   document.getElementById(event.target.id).setAttribute('value', '')
+  // }
 }
 
 const changeSymbol = function (counter, myVal) {
