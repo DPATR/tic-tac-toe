@@ -47,9 +47,12 @@ const gameO = 'O'
 const initGame = ''
 let symbol
 let counter = 0
+let drawCounter = 0
 let cellName
 let cellValue
 let haveAWinner
+let arrItemsPopulated
+let gameOver
 
 // http://www.dreamincode.net/forums/topic/296317-creating-a-simple-tic-tac-toe-game-in-javascript/
 
@@ -57,6 +60,7 @@ const onStartGame = function (event) {
   event.preventDefault()
   counter = 0
   gameArray = ['', '', '', '', '', '', '', '', '']
+  console.log(gameArray)
   for (let i = 0; i < gameArray.length; i++) {
     // line below is not working - need to initialize the event.target
     document.getElementById(event.target.id).setAttribute('value', '')
@@ -82,7 +86,6 @@ const changeSymbol = function (counter, myVal) {
 }
 
 const checkWin = function (gameArray) {
-  console.log('in checkWin')
   if (gameArray[0] === symbol && gameArray[1] === symbol && gameArray[2] === symbol) {
     return true
   }
@@ -109,30 +112,64 @@ const checkWin = function (gameArray) {
   }
 }
 
+const checkDraw = function (gameArray) {
+  drawCounter = 0
+  for (let i = 0; i < gameArray.length; i++) {
+    if (gameArray[i] === gameX || gameArray[i] === gameO) {
+      drawCounter++
+    }
+  }
+  if (drawCounter === gameArray.length) {
+    return true
+  } else {
+    return false
+  }
+}
+
 const onClickBoard = function (event) {
   event.preventDefault()
   const myVal = document.getElementById(event.target.id).value
   cellValue = changeSymbol(counter, myVal)
   if (cellValue === 'occupied') {
-    // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
-    // REPLACE ALERT ***
-    alert('You must choose a game position that is not occupied')
+    if (!gameOver) {
+      // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
+      // REPLACE ALERT ***
+      alert('You must choose a game position that is not occupied')
+    } else {
+      // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
+      // REPLACE ALERT ***
+      alert('The Game is Over. Start New Game to play again!')
+    }
   } else {
     document.getElementById(event.target.id).value = cellValue
     gameArray[event.target.id - 1] = cellValue
     counter++
     symbol = gameX
-    haveAWinner = checkWin(gameArray)
-    if (haveAWinner) {
-      alert(symbol + ' Wins!')
-    } else {
-      symbol = gameO
+    if (!haveAWinner) {
       haveAWinner = checkWin(gameArray)
       if (haveAWinner) {
+        // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
+        // REPLACE ALERT ***
+        gameOver = true
         alert(symbol + ' Wins!')
       }
     }
-    if (!haveAWinner) {
+  }
+  if (!haveAWinner) {
+    symbol = gameO
+    haveAWinner = checkWin(gameArray)
+    if (haveAWinner) {
+      // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
+      // REPLACE ALERT ***
+      gameOver = true
+      alert(symbol + ' Wins!')
+    }
+  }
+  if (!haveAWinner && !gameOver) {
+    gameOver = checkDraw(gameArray)
+    if (gameOver) {
+      // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
+      // REPLACE ALERT ***
       alert('It is a Draw!')
     }
   }
@@ -156,5 +193,6 @@ module.exports = {
   onClickBoard,
   checkWin,
   changeSymbol,
+  checkDraw,
   addHandlers
 }
