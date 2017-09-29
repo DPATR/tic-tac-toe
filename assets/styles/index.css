@@ -22,13 +22,14 @@ td {
 }
 
 h3 {
-  color: green;
+  color: navy;
   padding-top: 1%;
   text-align: center;
 }
 
 h2 {
   background-color: beige;
+  color: navy;
 }
 
 .btn-start {
@@ -69,8 +70,15 @@ h2 {
   font-size: 12px;
 }
 
+.signinbtn {
+  color: white;
+  background-color: navy;
+  font-size: 12px;
+}
+
 .signout {
   font-size: 12px;
+  float: left;
 }
 
 .pswdchange {
@@ -79,6 +87,7 @@ h2 {
 
 .cell {
   text-align: center;
+  background-color: green;
 }
 
 #gamemessage {

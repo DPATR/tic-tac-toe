@@ -3,7 +3,6 @@
 const store = require('../store')
 
 const signUpSuccess = function (data) {
-  // console.log('in ui.js ', data)
   $('#message').text('Signed up successfully')
 }
 
@@ -13,11 +12,15 @@ const signUpFailure = function (error) {
 }
 
 const signInSuccess = function (data) {
-  // console.log('in ui.js ', data)
   $('#message').text('Signed in successfully')
   store.user = data.user
   $('.games').show()
   $('.buttons').show()
+  $('.signup').hide()
+  $('.signin').hide()
+  $('.signuptxt').hide()
+  $('.signintxt').hide()
+  $('.signinbtn').hide()
 }
 
 const signInFailure = function (error) {
@@ -50,9 +53,6 @@ const signOutFailure = function (error) {
 const createGameSuccess = function (data) {
   $('#message').text('Game created successfully')
   store.game = data.game
-  // console.log('Game created successfully!')
-  // console.log('in ui.js ', data)
-  // console.log('in ui.js ', store.game)
 }
 
 const createGameFailure = function (error) {

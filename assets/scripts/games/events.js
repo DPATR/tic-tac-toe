@@ -35,9 +35,11 @@ const onSignOut = function (event) {
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
+  initVariables()
 }
 
 let gameArray = ['', '', '', '', '', '', '', '', '']
+$('.cell').text('')
 $('#gamemessage').text('')
 const gameX = 'X'
 const gameO = 'O'
@@ -71,8 +73,8 @@ const onStartGame = function (event) {
   const data = getFormFields(event.target)
   event.preventDefault()
   initVariables()
-  gameArray = ['', '', '', '', '', '', '', '', '']
-  $('.cell').text('')
+  // gameArray = ['', '', '', '', '', '', '', '', '']
+  // $('.cell').text('')
   api.createGame(data)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
