@@ -44,15 +44,12 @@ const onSignOut = function (event) {
 let gameArray = ['', '', '', '', '', '', '', '', '']
 const gameX = 'X'
 const gameO = 'O'
-const initGame = ''
 let symbol
 let counter = 0
 let drawCounter = 0
-let cellName
 let cellValue
 let haveAWinner
-let arrItemsPopulated
-let gameOver
+let gameOver = false
 
 // http://www.dreamincode.net/forums/topic/296317-creating-a-simple-tic-tac-toe-game-in-javascript/
 
@@ -62,27 +59,24 @@ const initVariables = function () {
   symbol = ''
   counter = 0
   drawCounter = 0
-  cellName = ''
   cellValue = ''
   haveAWinner = false
-  arrItemsPopulated = false
   gameOver = false
   return true
 }
 
 const onStartGame = function (event) {
+  const data = getFormFields(event.target)
   event.preventDefault()
+  console.log('in events.js ', data)
+  console.log('in events.js ', event.target)
   initVariables()
   gameArray = ['', '', '', '', '', '', '', '', '']
   // console.log(gameArray)
   $('.cell').text('')
-  // for (let i = 0; i < gameArray.length; i++) {
-  //   // line below is not working - need to initialize the event.target
-  //   // console.log(i)
-  //   console.log(document.getElementById(event.target.id).value)
-  //   // console.log(document.getElementById(event.target.id).value)
-  //   document.getElementById(event.target.id).setAttribute('value', '')
-  // }
+  api.createGame(data)
+    .then(ui.createGameSuccess)
+    .catch(ui.createGameFailure)
 }
 
 const changeSymbol = function (counter, myVal) {
@@ -189,7 +183,6 @@ const onClickBoard = function (event) {
   }
 }
 
-
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -197,7 +190,6 @@ const addHandlers = function () {
   $('#sign-out').on('submit', onSignOut)
   $('#game-board').on('submit', onStartGame)
   $('.cell').on('click', onClickBoard)
-  $('.btn-signout').on('click', onSignOutClick)
 }
 
 module.exports = {

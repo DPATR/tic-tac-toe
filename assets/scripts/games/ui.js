@@ -45,15 +45,15 @@ const signOutFailure = function (error) {
   $('#message').text('Error on sign-out')
 }
 
-const startGameSuccess = function (data) {
-  $('#message').text('Game started successfully')
-  console.log('Game started successfully!')
+const createGameSuccess = function (data) {
+  $('#message').text('Game created successfully')
+  console.log('Game created successfully!')
   store.user = null
 }
 
-const startGameFailure = function (error) {
+const createGameFailure = function (error) {
   console.error(error)
-  $('#message').text('Error on game-board')
+  $('#message').text('Error on create game')
 }
 
 module.exports = {
@@ -65,6 +65,6 @@ module.exports = {
   changePasswordFailure,
   signOutSuccess,
   signOutFailure,
-  startGameSuccess,
-  startGameFailure
+  createGameSuccess,
+  createGameFailure
 }

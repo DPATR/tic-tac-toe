@@ -43,14 +43,16 @@ const signOut = function (data) {
   })
 }
 
-const startGame = function (data) {
-  console.log('in api.js')
-  // return $.ajax({ // make a request of the API
-  //   url: config.apiOrigin + '/game-board',
-  //   method: 'POST',
-  //   data
-  // })
-  // Need to set up a shell for this function
+const createGame = function (data) {
+  console.log('in api.js', data)
+  return $.ajax({ // make a request of the API
+    url: config.apiOrigin + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+    // data
+  })
 }
 
 module.exports = {
@@ -58,5 +60,5 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  startGame
+  createGame
 }

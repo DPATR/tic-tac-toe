@@ -8,7 +8,7 @@
 # API="${API_ORIGIN:-http://httpbin.org}" # use this only for init testing-see lines 4-6
 # URL_PATH="/patch?id=${ID}" # use this only for init testing-see lines 4-6
 
-API="${API_ORIGIN:-https://ga-library-api.herokuapp.com}" # use this to ping the actual API server
+API="${API_ORIGIN:-http://tic-tac-toe.wdibos.com}" # use this to ping the actual API server
 URL_PATH="/change-password/${ID}" # use this to ping the actual API server
 
 curl "${API}${URL_PATH}" \
