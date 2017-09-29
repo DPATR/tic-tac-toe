@@ -8,7 +8,6 @@ const ui = require('./ui')
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('in events.js ', data) // data comes from the getFormFields function above; contains email, password, password_confirmation
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -17,7 +16,6 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('in events.js ', data) // data comes from the getFormFields function above; contains email, password, password_confirmation
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -26,7 +24,6 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('in events.js ', data) // data comes from the getFormFields function above; contains old password, new password
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
@@ -35,13 +32,13 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('in events.js ', data) // data comes from the getFormFields function above; contains old password, new password
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
 
 let gameArray = ['', '', '', '', '', '', '', '', '']
+$('#gamemessage').text('')
 const gameX = 'X'
 const gameO = 'O'
 let symbol
@@ -54,10 +51,7 @@ let gameUpdate = false
 let index = 0
 let gameStarted = false
 
-// http://www.dreamincode.net/forums/topic/296317-creating-a-simple-tic-tac-toe-game-in-javascript/
-
 const initVariables = function () {
-  console.log('in initVariables')
   $('#gamemessage').text('')
   symbol = ''
   counter = 0
@@ -67,17 +61,17 @@ const initVariables = function () {
   gameOver = false
   gameUpdate = false
   index = 0
+  gameStarted = false
+  gameArray = ['', '', '', '', '', '', '', '', '']
+  $('.cell').text('')
   return true
 }
 
 const onStartGame = function (event) {
   const data = getFormFields(event.target)
   event.preventDefault()
-  console.log('in events.js ', data)
-  console.log('in events.js ', event.target)
   initVariables()
   gameArray = ['', '', '', '', '', '', '', '', '']
-  // console.log(gameArray)
   $('.cell').text('')
   api.createGame(data)
     .then(ui.createGameSuccess)
@@ -85,11 +79,15 @@ const onStartGame = function (event) {
   gameStarted = true
 }
 
+const onStatistics = function (event) {
+  console.log('in onStatistics')
+  event.preventDefault()
+  api.getGames(event)
+    .then(ui.getGamesSuccess)
+    .catch(ui.getGamesFailure)
+}
+
 const onUpdateGame = function (index, value, over) {
-  // console.log('in onUpdateGame')
-  // console.log('index value= ' + index)
-  // console.log('player value= ' + value)
-  // console.log('gameOver= ' + over)
   event.preventDefault()
   const data = {
     'game': {
@@ -168,9 +166,7 @@ const checkDraw = function (gameArray) {
 const onClickBoard = function (event) {
   event.preventDefault()
   const myVal = $(this).text()
-  // console.log(myVal)
   cellValue = changeSymbol(counter, myVal)
-  // console.log('in events.js and cellValue = ', cellValue)
   if (!gameStarted) {
     $('#gamemessage').text('The Game has not been started. Click on Start A New Game to play!')
     return
@@ -182,13 +178,9 @@ const onClickBoard = function (event) {
   if (cellValue === 'occupied') {
     $('#gamemessage').text('You must choose a game position that is not occupied')
   } else {
-    // push the value to the cell in the UI
     $(this).text(cellValue)
-    // console.log(cellValue)
     index = event.target.id - 1
     gameArray[index] = cellValue
-    // call onUpdateGame function to update the game of this move on the game board
-    console.log('calling onUpdateGame function')
     gameUpdate = onUpdateGame(index, cellValue, gameOver)
     if (cellValue === gameX) {
       $('#gamemessage').text('The next move will be player ' + gameO)
@@ -204,8 +196,6 @@ const onClickBoard = function (event) {
       if (haveAWinner) {
         gameOver = true
         $('#gamemessage').text(symbol + ' Wins!')
-        // call onUpdateGame function to update the game with game is over
-        console.log('calling onUpdateGame function')
         gameUpdate = onUpdateGame(index, cellValue, gameOver)
       }
     }
@@ -216,8 +206,6 @@ const onClickBoard = function (event) {
     if (haveAWinner) {
       gameOver = true
       $('#gamemessage').text(symbol + ' Wins!')
-      // call onUpdateGame function to update the game with game is over
-      console.log('calling onUpdateGame function')
       gameUpdate = onUpdateGame(index, cellValue, gameOver)
     }
   }
@@ -234,7 +222,8 @@ const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#game-board').on('submit', onStartGame)
+  $('#start').on('click', onStartGame)
+  $('#stats').on('click', onStatistics)
   $('.cell').on('click', onClickBoard)
 }
 
@@ -244,6 +233,7 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onStartGame,
+  onStatistics,
   onUpdateGame,
   onClickBoard,
   checkWin,

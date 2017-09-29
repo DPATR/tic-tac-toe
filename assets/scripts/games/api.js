@@ -20,7 +20,7 @@ const signIn = function (data) {
 }
 
 const changePassword = function (data) {
-  console.log('in api.js ', store.user)
+  // console.log('in api.js ', store.user)
   return $.ajax({ // make a request of the API
     url: config.apiOrigin + '/change-password/' + store.user.id,
     method: 'PATCH',
@@ -32,7 +32,7 @@ const changePassword = function (data) {
 }
 
 const signOut = function (data) {
-  console.log('in api.js ', store.user)
+  // console.log('in api.js ', store.user)
   return $.ajax({ // make a request of the API
     url: config.apiOrigin + '/sign-out/' + store.user.id,
     method: 'DELETE',
@@ -44,7 +44,7 @@ const signOut = function (data) {
 }
 
 const createGame = function (data) {
-  console.log('in api.js', data)
+  // console.log('in api.js', data)
   return $.ajax({ // make a request of the API
     url: config.apiOrigin + '/games',
     method: 'POST',
@@ -66,11 +66,23 @@ const updategame = function (data) {
   })
 }
 
+const getGames = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+    // data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   createGame,
-  updategame
+  updategame,
+  getGames
 }

@@ -17,6 +17,10 @@ td {
   display: none;
 }
 
+.buttons {
+  display: none;
+}
+
 h3 {
   color: green;
   padding-top: 1%;
