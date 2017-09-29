@@ -47,13 +47,27 @@ const signOutFailure = function (error) {
 
 const createGameSuccess = function (data) {
   $('#message').text('Game created successfully')
-  console.log('Game created successfully!')
-  store.user = null
+  store.game = data.game
+  // console.log('Game created successfully!')
+  // console.log('in ui.js ', data)
+  // console.log('in ui.js ', store.game)
 }
 
 const createGameFailure = function (error) {
   console.error(error)
   $('#message').text('Error on create game')
+}
+
+const updateGameSuccess = function (data) {
+  $('#message').text('Game updated successfully')
+  // store.games = data.games
+  // console.log('Game updated successfully!')
+  // console.log('in ui.js ', data)
+}
+
+const updateGameFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error on join game')
 }
 
 module.exports = {
@@ -66,5 +80,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }

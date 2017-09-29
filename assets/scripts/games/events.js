@@ -50,6 +50,9 @@ let drawCounter = 0
 let cellValue
 let haveAWinner
 let gameOver = false
+let gameUpdate = false
+let index = 0
+let gameStarted = false
 
 // http://www.dreamincode.net/forums/topic/296317-creating-a-simple-tic-tac-toe-game-in-javascript/
 
@@ -62,6 +65,8 @@ const initVariables = function () {
   cellValue = ''
   haveAWinner = false
   gameOver = false
+  gameUpdate = false
+  index = 0
   return true
 }
 
@@ -77,6 +82,28 @@ const onStartGame = function (event) {
   api.createGame(data)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
+  gameStarted = true
+}
+
+const onUpdateGame = function (index, value, over) {
+  // console.log('in onUpdateGame')
+  // console.log('index value= ' + index)
+  // console.log('player value= ' + value)
+  // console.log('gameOver= ' + over)
+  event.preventDefault()
+  const data = {
+    'game': {
+      'cell': {
+        'index': index,
+        'value': value
+      },
+      'over': over
+    }
+  }
+  api.updategame(data)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFailure)
+  return true
 }
 
 const changeSymbol = function (counter, myVal) {
@@ -140,21 +167,36 @@ const checkDraw = function (gameArray) {
 
 const onClickBoard = function (event) {
   event.preventDefault()
-  // let myVal = document.getElementById(event.target.id).value
   const myVal = $(this).text()
   // console.log(myVal)
   cellValue = changeSymbol(counter, myVal)
+  // console.log('in events.js and cellValue = ', cellValue)
+  if (!gameStarted) {
+    $('#gamemessage').text('The Game has not been started. Click on Start A New Game to play!')
+    return
+  }
   if (gameOver) {
-    $('#gamemessage').text('The Game is Over. Start New Game to play again!')
+    $('#gamemessage').text('The Game is Over. Start A New Game to play again!')
     return
   }
   if (cellValue === 'occupied') {
     $('#gamemessage').text('You must choose a game position that is not occupied')
   } else {
+    // push the value to the cell in the UI
     $(this).text(cellValue)
     // console.log(cellValue)
-    gameArray[event.target.id - 1] = cellValue
-    // console.log(gameArray)
+    index = event.target.id - 1
+    gameArray[index] = cellValue
+    // call onUpdateGame function to update the game of this move on the game board
+    console.log('calling onUpdateGame function')
+    gameUpdate = onUpdateGame(index, cellValue, gameOver)
+    if (cellValue === gameX) {
+      $('#gamemessage').text('The next move will be player ' + gameO)
+    } else {
+      if (cellValue === gameO) {
+        $('#gamemessage').text('The next move will be player ' + gameX)
+      }
+    }
     counter++
     symbol = gameX
     if (!haveAWinner) {
@@ -162,6 +204,9 @@ const onClickBoard = function (event) {
       if (haveAWinner) {
         gameOver = true
         $('#gamemessage').text(symbol + ' Wins!')
+        // call onUpdateGame function to update the game with game is over
+        console.log('calling onUpdateGame function')
+        gameUpdate = onUpdateGame(index, cellValue, gameOver)
       }
     }
   }
@@ -169,10 +214,11 @@ const onClickBoard = function (event) {
     symbol = gameO
     haveAWinner = checkWin(gameArray)
     if (haveAWinner) {
-      // *** HOW TO CREATE & USE DYNAMIC TEXT MESSAGES ON A WEB PAGE
-      // REPLACE ALERT ***
       gameOver = true
       $('#gamemessage').text(symbol + ' Wins!')
+      // call onUpdateGame function to update the game with game is over
+      console.log('calling onUpdateGame function')
+      gameUpdate = onUpdateGame(index, cellValue, gameOver)
     }
   }
   if (!haveAWinner && !gameOver) {
@@ -198,6 +244,7 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onStartGame,
+  onUpdateGame,
   onClickBoard,
   checkWin,
   changeSymbol,
