@@ -6,6 +6,35 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 
+let gameArray = ['', '', '', '', '', '', '', '', '']
+$('.cell').text('')
+$('#gamemessage').text('')
+const gameX = 'X'
+const gameO = 'O'
+let symbol
+let counter = 0
+let drawCounter = 0
+let cellValue
+let haveAWinner
+let gameOver = false
+let index = 0
+let gameStarted = false
+
+const initVariables = function () {
+  $('#gamemessage').text('')
+  symbol = ''
+  counter = 0
+  drawCounter = 0
+  cellValue = ''
+  haveAWinner = false
+  gameOver = false
+  index = 0
+  gameStarted = false
+  gameArray = ['', '', '', '', '', '', '', '', '']
+  $('.cell').text('')
+  return true
+}
+
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
@@ -15,7 +44,7 @@ const onSignUp = function (event) {
     .catch(ui.signUpFailure)
 }
 
-const signedIn = false
+let signedIn = false
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
@@ -29,10 +58,9 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('signedIn = ' + signedIn)
-  console.log('store.signedIn = ' + store.signedIn)
   $('#message').text('')
-  if (!store.signedIn === true) {
+  signedIn = store.signedIn
+  if (!signedIn) {
     $('#message').text('You need to be signed in to change password')
   } else {
     api.changePassword(data)
@@ -49,45 +77,19 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
   initVariables()
-}
-
-let gameArray = ['', '', '', '', '', '', '', '', '']
-$('.cell').text('')
-$('#gamemessage').text('')
-const gameX = 'X'
-const gameO = 'O'
-let symbol
-let counter = 0
-let drawCounter = 0
-let cellValue
-let haveAWinner
-let gameOver = false
-let gameUpdate = false
-let index = 0
-let gameStarted = false
-
-const initVariables = function () {
-  $('#gamemessage').text('')
-  symbol = ''
-  counter = 0
-  drawCounter = 0
-  cellValue = ''
-  haveAWinner = false
-  gameOver = false
-  gameUpdate = false
-  index = 0
-  gameStarted = false
-  gameArray = ['', '', '', '', '', '', '', '', '']
-  $('.cell').text('')
-  return true
+  document.getElementById('emailSignin').value = ''
+  document.getElementById('passwordSignin').value = ''
+  document.getElementById('emailSignup').value = ''
+  document.getElementById('passwordSignup').value = ''
+  document.getElementById('confirmSignup').value = ''
+  document.getElementById('oldPswdChange').value = ''
+  document.getElementById('newPswdChange').value = ''
 }
 
 const onStartGame = function (event) {
   const data = getFormFields(event.target)
   event.preventDefault()
   initVariables()
-  // gameArray = ['', '', '', '', '', '', '', '', '']
-  // $('.cell').text('')
   api.createGame(data)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
@@ -95,7 +97,6 @@ const onStartGame = function (event) {
 }
 
 const onStatistics = function (event) {
-  console.log('in onStatistics')
   event.preventDefault()
   api.getGames(event)
     .then(ui.getGamesSuccess)
@@ -196,7 +197,7 @@ const onClickBoard = function (event) {
     $(this).text(cellValue)
     index = event.target.id - 1
     gameArray[index] = cellValue
-    gameUpdate = onUpdateGame(index, cellValue, gameOver)
+    onUpdateGame(index, cellValue, gameOver)
     if (cellValue === gameX) {
       $('#gamemessage').text('The next move will be player ' + gameO)
     } else {
@@ -211,7 +212,7 @@ const onClickBoard = function (event) {
       if (haveAWinner) {
         gameOver = true
         $('#gamemessage').text(symbol + ' Wins!')
-        gameUpdate = onUpdateGame(index, cellValue, gameOver)
+        onUpdateGame(index, cellValue, gameOver)
       }
     }
   }
@@ -221,7 +222,7 @@ const onClickBoard = function (event) {
     if (haveAWinner) {
       gameOver = true
       $('#gamemessage').text(symbol + ' Wins!')
-      gameUpdate = onUpdateGame(index, cellValue, gameOver)
+      onUpdateGame(index, cellValue, gameOver)
     }
   }
   if (!haveAWinner && !gameOver) {

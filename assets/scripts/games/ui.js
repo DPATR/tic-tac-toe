@@ -14,8 +14,7 @@ const signUpFailure = function (error) {
 const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
   store.user = data.user
-  data.signedIn = true
-  store.signedIn = data.signedIn
+  store.signedIn = true
   $('.games').show()
   $('.buttons').show()
   $('#change-password').show()

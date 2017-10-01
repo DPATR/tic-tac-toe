@@ -16,13 +16,14 @@
       <div class="headingContainer"><h2 class="topHeading">Tic-Tac-Toe</h2></div>
       <br>
       <div id='message' class='message'></div>
+      <br>
       </div>
         <form id="sign-up">
           <fieldset>
             <legend class="authlabel">Sign up!</legend>
-              <input type="text" class="signup" name="credentials[email]" placeholder="Enter Email">
-              <input type="text" class="signup" name="credentials[password]" placeholder="Enter Password">
-              <input type="text" class="signup" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="text" id="emailSignup" class="signup" name="credentials[email]" placeholder="Enter Email">
+              <input type="text" id="passwordSignup" class="signup" name="credentials[password]" placeholder="Enter Password">
+              <input type="text" id="confirmSignup" class="signup" name="credentials[password_confirmation]" placeholder="Confirm Password">
               <input type="submit" class="authClickSignup" name="submit" value="Sign up!">
               <input type="reset" class="authClickSignup" value="Reset" />
           </fieldset>
@@ -31,8 +32,8 @@
         <form id="sign-in">
           <fieldset>
             <legend class="authlabel">Sign in!</legend>
-            <input type="text" class="signin" name="credentials[email]" placeholder="Enter Email">
-            <input type="text" class="signin" name="credentials[password]" placeholder="Enter Password">
+            <input type="text" id="emailSignin" class="signin" name="credentials[email]" placeholder="Enter Email">
+            <input type="text" id="passwordSignin" class="signin" name="credentials[password]" placeholder="Enter Password">
             <input type="submit" class="authClickSignin" name="submit" value="Sign in!">
             <input type="reset" class="authClickSignin" value="Reset" />
           </fieldset>
@@ -41,8 +42,8 @@
         <form id="change-password">
           <fieldset>
             <legend class="authlabel">Change Password!</legend>
-            <input type="text" class="pswdchange" name="passwords[old]" placeholder="Enter Old Password">
-            <input type="text" class="pswdchange" name="passwords[new]" placeholder="Enter New Password">
+            <input type="text" id="oldPswdChange" class="pswdchange" name="passwords[old]" placeholder="Enter Old Password">
+            <input type="text" id="newPswdChange" class="pswdchange" name="passwords[new]" placeholder="Enter New Password">
             <input type="submit" class="authClickPswd" name="submit" value="Change Password!">
             <input type="reset" class="authClickPswd" value="Reset" />
           </fieldset>

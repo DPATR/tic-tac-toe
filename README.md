@@ -1,61 +1,40 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# DESCRIPTION
 
-# browser-template
+This is a game of Tic-Tac-Toe.  One person can play this game which uses players X and O in a game board.
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+Author:  Denise Patriquin
+Date:  10/1/2017
 
-## Installation -- DONE!!
+Authorization:
+1) When playing the game for the first time, the person must Sign Up with an email address
+and password and then Sign In to play the game.
+2) An option to Change Password will be available once you are signed in.
+3) You should Sign out before exiting the game.
 
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory.
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Replace all instances of `ga-wdi-boston.browser-template` with the name of your project.
-1.  Move into the new project and `git init`
-1.  Add all of the files in your project with the command `git add -A`
-  -   *Note:* THIS IS THE ONLY TIME YOU SHOULD RUN THIS COMMAND
-1.  Commit all of your files with the command `git commit`
-  -   Your commit title should read `Initial commit`
-1.  Install dependencies with `npm install`.
+Game Board:
+1) You must Start A New Game to play.
+2) You will prompted for all game moves, switching between player X and player O.
+3) You will be notified of a winner.
+4) Game Statistics will notify with your total number of games.
 
-## Structure
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/index.js`](assets/scripts/index.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+# TECHNOLOGIES
 
-Developers should set `config.apiOrigins.production` (and
-`config.apiOrigins.development` if it differs from the default).  With
-`apiOrigins` set, developers may rely on `config.apiOrigin` as the base for API
-URLs.
+1) JavaScript
+2) jQuery for DOM manipulation and event handling
+3) AJAX for interacting with an API
+4) CSS
+5) Bootstrap
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss).
+# PLANNING
 
-Developers should use [getFormFields](forms.md) to retrieve form data to send to
-an API.
+Wireframe: https://imgur.com/a/PwHdR
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+User Stories: https://imgur.com/a/7WdNA
 
-## Tasks
+Approach:
 
-Developers should run these often!
-
--   `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
--   `grunt make-standard`: reformats all your code in the JavaScript Standard Style
--   `grunt <server|serve|s>`: generates bundles, watches, and livereloads
--   `grunt test`: runs any automated tests, depends on `grunt build`
--   `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-
-## [License](LICENSE)
-
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+1) I used a top-down analysis for this project.
+2) I began by writing pseudo-code and then built code modules.
+3) I used test scenarios and each module was unit tested.
+4) I did integration and end-to-end testing for the application as a whole.
