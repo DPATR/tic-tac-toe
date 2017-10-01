@@ -2,9 +2,6 @@
 
 This is a game of Tic-Tac-Toe.  One person can play this game which uses players X and O in a game board.
 
-Author:  Denise Patriquin
-Date:  10/1/2017
-
 Authorization:
 1) When playing the game for the first time, the person must Sign Up with an email address
 and password and then Sign In to play the game.
@@ -17,6 +14,8 @@ Game Board:
 3) You will be notified of a winner.
 4) Game Statistics will notify with your total number of games.
 
+Author:  Denise Patriquin
+Date:  10/1/2017
 
 # TECHNOLOGIES
 
