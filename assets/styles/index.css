@@ -1,9 +1,13 @@
+.container-fluid {
+  background-color: #183249;
+}
+
 .styled {
-  border-collapse: collapse;
-  margin-left: 37%;
   border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
   width: 400px;
-  /*margin-top: 5%;*/
 }
 
 td {
@@ -21,81 +25,91 @@ td {
   display: none;
 }
 
-h3 {
-  color: navy;
+#container {
+  text-align: center;
+}
+
+.btn-start, .btn-gamestats {
+  background-color: #dbd4ae;
+  border: 1px solid;
+  border-radius: 15px;
+  color: #6c2927;
+  font-size: 18px;
+}
+
+.btn-start {
+  display: inline-block;
+}
+
+.btn-gamestats {
+  display: inline-block;
+}
+
+.gameGreeting {
+  color: #d6d2b5;
   padding-top: 1%;
   text-align: center;
 }
 
-h2 {
-  background-color: beige;
-  color: navy;
+.headingContainer {
+  align-items: center;
+  background-color: #dbd4ae;
+  display: flex;
+  height: 70px;
 }
 
-.btn-start {
-  background-color: gray;
-  color: white;
+.headingContainer h2 {
+  margin: auto;
+  vertical-align: middle;
+}
+
+.topHeading {
+  color: #6c2927;
+  font-family: Georgia, serif;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: bold;
+  padding-bottom: 22px;
+  padding-top: 10px;
+  vertical-align:middle;
+}
+
+#change-password, #sign-out {
+  display: none;
+}
+
+.authlabel {
+  color: #d6d2b5;
   font-size: 18px;
-  margin-left: 37%;
 }
 
-.btn-gamestats {
-  background-color: gray;
-  color: white;
-  font-size: 18px;
-  margin-left: 3%;
-}
-
-.signuptxt {
+.authClickSignup, .authClickSignin, .authClickPswd, .authClickSignout  {
+  background-color: #dbd4ae;
+  border: 2px solid;
+  border-radius: 15px;
+  color: #6c2927;
   font-size: 15px;
 }
 
-.signintxt {
-  font-size: 15px;
-}
-
-.signouttxt {
-  font-size: 15px;
-}
-
-.changepswd {
-  font-size: 15px;
-}
-
-.signup {
-  font-size: 12px;
-}
-
-.signin {
-  font-size: 12px;
-}
-
-.signinbtn {
-  color: white;
-  background-color: navy;
-  font-size: 12px;
-}
-
-.signout {
-  font-size: 12px;
-  float: left;
-}
-
-.pswdchange {
-  font-size: 12px;
+.signup, .signin, .pswdchange {
+  background-color: #c1c1c1;
 }
 
 .cell {
+  background-color: #b8a583;
+  color: #6c2927;
+  font-size: 40px;
   text-align: center;
-  background-color: green;
 }
 
-#gamemessage {
-  text-align: center;
-  color: red;
+.gamemessage {
+  color: #dd920a;
   font-size: 18px;
+  text-align: center;
 }
 
-#message {
-  color: red;
+.message {
+  color: #dd920a;
+  font-size: 18px;
+  text-align: left;
 }

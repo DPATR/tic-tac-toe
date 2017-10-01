@@ -4,18 +4,23 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const api = require('./api')
 const ui = require('./ui')
+const store = require('../store')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
+  $('#message').text('')
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
 }
 
+const signedIn = false
+
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
+  $('#message').text('')
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -24,14 +29,22 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  api.changePassword(data)
-    .then(ui.changePasswordSuccess)
-    .catch(ui.changePasswordFailure)
+  console.log('signedIn = ' + signedIn)
+  console.log('store.signedIn = ' + store.signedIn)
+  $('#message').text('')
+  if (!store.signedIn === true) {
+    $('#message').text('You need to be signed in to change password')
+  } else {
+    api.changePassword(data)
+      .then(ui.changePasswordSuccess)
+      .catch(ui.changePasswordFailure)
+  }
 }
 
 const onSignOut = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
+  $('#message').text('')
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)

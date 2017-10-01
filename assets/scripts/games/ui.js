@@ -14,13 +14,14 @@ const signUpFailure = function (error) {
 const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
   store.user = data.user
+  data.signedIn = true
+  store.signedIn = data.signedIn
   $('.games').show()
   $('.buttons').show()
-  $('.signup').hide()
-  $('.signin').hide()
-  $('.signuptxt').hide()
-  $('.signintxt').hide()
-  $('.signinbtn').hide()
+  $('#change-password').show()
+  $('#sign-out').show()
+  $('#sign-in').hide()
+  $('#sign-up').hide()
 }
 
 const signInFailure = function (error) {
@@ -39,10 +40,13 @@ const changePasswordFailure = function (error) {
 
 const signOutSuccess = function (data) {
   $('#message').text('Signed out successfully')
-  // console.log('Signed out successfully!')
   store.user = null
   $('.games').hide()
   $('.buttons').hide()
+  $('#sign-in').show()
+  $('#sign-up').show()
+  $('#change-password').hide()
+  $('#sign-out').hide()
 }
 
 const signOutFailure = function (error) {

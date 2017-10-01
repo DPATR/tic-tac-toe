@@ -13,49 +13,52 @@
     </head>
     <body class="container-fluid">
       <div>
-      <h2>Tic-Tac-Toe</h2>
-      <div id='message'></div>
+      <div class="headingContainer"><h2 class="topHeading">Tic-Tac-Toe</h2></div>
       <br>
+      <div id='message' class='message'></div>
       </div>
         <form id="sign-up">
           <fieldset>
-            <legend class="signuptxt">Sign up!</legend>
+            <legend class="authlabel">Sign up!</legend>
               <input type="text" class="signup" name="credentials[email]" placeholder="Enter Email">
               <input type="text" class="signup" name="credentials[password]" placeholder="Enter Password">
               <input type="text" class="signup" name="credentials[password_confirmation]" placeholder="Confirm Password">
-              <input type="submit" class="signup" name="submit" value="Sign up!">
+              <input type="submit" class="authClickSignup" name="submit" value="Sign up!">
+              <input type="reset" class="authClickSignup" value="Reset" />
           </fieldset>
         </form>
         <br>
         <form id="sign-in">
           <fieldset>
-            <legend class="signintxt">Sign in!</legend>
+            <legend class="authlabel">Sign in!</legend>
             <input type="text" class="signin" name="credentials[email]" placeholder="Enter Email">
             <input type="text" class="signin" name="credentials[password]" placeholder="Enter Password">
-            <input type="submit" class="signinbtn" name="submit" value="Sign in!">
+            <input type="submit" class="authClickSignin" name="submit" value="Sign in!">
+            <input type="reset" class="authClickSignin" value="Reset" />
           </fieldset>
         </form>
         <br>
         <form id="change-password">
           <fieldset>
-            <legend class="changepswd">Change Password!</legend>
+            <legend class="authlabel">Change Password!</legend>
             <input type="text" class="pswdchange" name="passwords[old]" placeholder="Enter Old Password">
             <input type="text" class="pswdchange" name="passwords[new]" placeholder="Enter New Password">
-            <input type="submit" class="pswdchange" name="submit" value="Change Password!">
+            <input type="submit" class="authClickPswd" name="submit" value="Change Password!">
+            <input type="reset" class="authClickPswd" value="Reset" />
           </fieldset>
         </form>
         <br>
         <form id="sign-out">
           <fieldset>
-            <legend class="signouttxt">Sign out!</legend>
-            <input type="submit" class="signout" name="submit" value="Sign out!">
+            <legend class="authlabel">Sign out!</legend>
+            <input type="submit" class="authClickSignout" name="submit" value="Sign out!">
           </fieldset>
         </form>
         <form class="games" id="game-board">
           <div>
-            <h3>Let's Play the Game!</h3>
+            <div class="gameGreeting"><h3>Let's Play the Game!</h3></div>
             <div>
-              <div id='gamemessage'></div>
+              <div id='gamemessage' class='gamemessage'></div>
               <br>
               <table class="styled">
                 <tr id="row1">
@@ -77,10 +80,11 @@
             </div>
           </div>
           <br>
+          <br>
         </form>
-        <div class="buttons">
-          <button type="submit" id="start" class="btn-start">Start A New Game</button>
-          <button type="submit" id="stats" class="btn-gamestats">See Game Statistics</button>
+        <div id="container" class="buttons">
+            <button type="button" id="start" class="btn-start">Start A New Game</button>
+            <button type="button" id="stats" class="btn-gamestats">See Game Statistics</button>
         </div>
     <section id="content"></section>
     </body>
