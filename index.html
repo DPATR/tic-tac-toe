@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>TIC TAC TOE</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <div>
+      <div class="headingContainer"><h2 class="topHeading">Tic-Tac-Toe</h2></div>
+      <br>
+      <div id='message' class='message'></div>
+      <br>
+      </div>
+        <form id="sign-up">
+          <fieldset>
+            <legend class="authlabel">Sign up!</legend>
+              <input type="text" id="emailSignup" class="signup" name="credentials[email]" placeholder="Enter Email">
+              <input type="text" id="passwordSignup" class="signup" name="credentials[password]" placeholder="Enter Password">
+              <input type="text" id="confirmSignup" class="signup" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="submit" class="authClickSignup" name="submit" value="Sign up!">
+              <input type="reset" class="authClickSignup" value="Reset" />
+          </fieldset>
+        </form>
+        <br>
+        <form id="sign-in">
+          <fieldset>
+            <legend class="authlabel">Sign in!</legend>
+            <input type="text" id="emailSignin" class="signin" name="credentials[email]" placeholder="Enter Email">
+            <input type="text" id="passwordSignin" class="signin" name="credentials[password]" placeholder="Enter Password">
+            <input type="submit" class="authClickSignin" name="submit" value="Sign in!">
+            <input type="reset" class="authClickSignin" value="Reset" />
+          </fieldset>
+        </form>
+        <br>
+        <form id="change-password">
+          <fieldset>
+            <legend class="authlabel">Change Password!</legend>
+            <input type="text" id="oldPswdChange" class="pswdchange" name="passwords[old]" placeholder="Enter Old Password">
+            <input type="text" id="newPswdChange" class="pswdchange" name="passwords[new]" placeholder="Enter New Password">
+            <input type="submit" class="authClickPswd" name="submit" value="Change Password!">
+            <input type="reset" class="authClickPswd" value="Reset" />
+          </fieldset>
+        </form>
+        <br>
+        <form id="sign-out">
+          <fieldset>
+            <legend class="authlabel">Sign out!</legend>
+            <input type="submit" class="authClickSignout" name="submit" value="Sign out!">
+          </fieldset>
+        </form>
+        <form class="games" id="game-board">
+          <div>
+            <div class="gameGreeting"><h3>Let's Play the Game!</h3></div>
+            <div>
+              <div id='gamemessage' class='gamemessage'></div>
+              <br>
+              <table class="styled">
+                <tr id="row1">
+                  <td class="cell" id="1"></td>
+                  <td class="cell" id="2"></td>
+                  <td class="cell" id="3"></td>
+                </tr>
+                <tr id="row2">
+                  <td class="cell" id="4"></td>
+                  <td class="cell" id="5"></td>
+                  <td class="cell" id="6"></td>
+                </tr>
+                <tr id="row3">
+                  <td class="cell" id="7"></td>
+                  <td class="cell" id="8"></td>
+                  <td class="cell" id="9"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <br>
+          <br>
+        </form>
+        <div id="container" class="buttons">
+            <button type="button" id="start" class="btn-start">Start A New Game</button>
+            <button type="button" id="stats" class="btn-gamestats">See Game Statistics</button>
+        </div>
+    <section id="content"></section>
+    </body>
+</html>
